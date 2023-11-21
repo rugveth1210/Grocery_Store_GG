@@ -1,0 +1,10 @@
+  <div class="card-container">
+    <div *ngFor="let product of productsList" class="card">
+      <img [src]="product.imageUrl" alt="{{ product.name }}">
+      <div class="card-content">
+        <h3>{{ product.name }}</h3>
+        <p class="price">Price: ${{ product.price.toFixed(2) }}</p>
+      </div>
+    </div>
+  </div>
+  

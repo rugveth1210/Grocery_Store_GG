@@ -1,0 +1,41 @@
+
+
+  .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      padding:30px
+    }
+    
+    .card {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+    
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .card-content {
+      padding: 10px;
+    }
+    
+    h3 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    
+    .price {
+      color: #4CAF50;
+      margin: 5px 0;
+    }
+    
