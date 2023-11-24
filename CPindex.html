@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="profile-picture.jpg" alt="Profile Picture">
+        <h1>John Doe</h1>
+    </div>
+
+    <div class="profile-info" id="profileInfo">
+        <p><strong>Email:</strong> <span id="email">john.doe@example.com</span></p>
+        <p><strong>Phone:</strong> <span id="phone">(555) 123-4567</span></p>
+        <p><strong>Location:</strong> <span id="location">City, Country</span></p>
+    </div>
+
+    <div class="profile-details">
+        <h2>Address</h2>
+        <p id="additionalDetails">One N Grand Blvd, Saint Louis, Missouri, 63103</p>
+    </div>
+
+    <button id="editButton" onclick="toggleEditMode()">Edit</button>
+</div>
+
+<script>
+    function toggleEditMode() {
+        const editButton = document.getElementById('editButton');
+        const emailField = document.getElementById('email');
+        const phoneField = document.getElementById('phone');
+        const locationField = document.getElementById('location');
+        const additionalDetailsField = document.getElementById('additionalDetails');
+
+        const isEditMode = editButton.innerText === 'Edit';
+
+        if (isEditMode) {
+            editButton.innerText = 'Save';
+        } else {
+            editButton.innerText = 'Edit';
+            // Save updated values (you can send them to a server or update your data model)
+            const updatedEmail = emailField.innerText; // Get updated values from input fields
+            const updatedPhone = phoneField.innerText;
+            const updatedLocation = locationField.innerText;
+            const updatedDetails = additionalDetailsField.innerText;
+
+            // For simplicity, we are updating the inner text directly, but you may want to update your data model or send to a server.
+            emailField.innerText = updatedEmail;
+            phoneField.innerText = updatedPhone;
+            locationField.innerText = updatedLocation;
+            additionalDetailsField.innerText = updatedDetails;
+        }
+
+        // Enable or disable input fields based on edit mode
+        emailField.contentEditable = isEditMode;
+        phoneField.contentEditable = isEditMode;
+        locationField.contentEditable = isEditMode;
+        additionalDetailsField.contentEditable = isEditMode;
+    }
+</script>
+
+</body>
+</html>
