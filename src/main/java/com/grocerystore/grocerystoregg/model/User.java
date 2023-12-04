@@ -4,9 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
@@ -15,7 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class User {
@@ -39,10 +37,6 @@ public class User {
 	@ElementCollection
 	@CollectionTable(name="payment_information",joinColumns = @JoinColumn(name="user_id"))
 	private List<PaymentInformation> paymentInformation=new ArrayList<>();
-	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Rating> ratings=new ArrayList<>();
 	
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
@@ -126,14 +120,6 @@ public class User {
 		this.paymentInformation = paymentInformation;
 	}
 
-	public List<Rating> getRatings() {
-		return ratings;
-	}
-
-	public void setRatings(List<Rating> ratings) {
-		this.ratings = ratings;
-	}
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -143,7 +129,7 @@ public class User {
 	}
 
 	public User(Long id, String firstName, String lastName, String password, String email, String role, String mobile,
-			String address, List<PaymentInformation> paymentInformation, List<Rating> ratings,
+			String address, List<PaymentInformation> paymentInformation,
 			LocalDateTime createdAt) {
 		super();
 		this.id = id;
@@ -155,7 +141,6 @@ public class User {
 		this.mobile = mobile;
 		this.address = address;
 		this.paymentInformation = paymentInformation;
-		this.ratings = ratings;
 		this.createdAt = createdAt;
 	}
 	
